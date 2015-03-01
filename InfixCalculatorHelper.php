@@ -47,7 +47,7 @@ class InfixCalculatorHelper
     {
         $condition1 = count($numberStack) > 1;
         $condition2 = empty($operatorStack);
-        $condition3 = $operatorPriority[end($operatorStack)] > $operatorPriority[$arg];
+        $condition3 = !empty($operatorStack) ? $operatorPriority[end($operatorStack)] > $operatorPriority[$arg] : false;
 
         return $condition1 && ($condition2 || $condition3);
     }

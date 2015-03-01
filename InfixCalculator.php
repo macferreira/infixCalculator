@@ -2,7 +2,7 @@
 
 namespace InfixCalculator;
 
-require_once('InfixCalculatorHelper');
+require_once('InfixCalculatorHelper.php');
 
 use InfixCalculatorHelper\InfixCalculatorHelper;
 
@@ -24,7 +24,7 @@ class InfixCalculator
     {
         $this->helper = new InfixCalculatorHelper();
 
-        $this->operatorPriority = $this->helper->getOperatorPriority;
+        $this->operatorPriority = $this->helper->getOperatorPriority();
     }
 
     /**
@@ -64,20 +64,21 @@ class InfixCalculator
 
                 if($needsToCalculate) {
 
-                    $operandToUse = array_pop($operatorStack);
-                    $firstNumberToUse = array_pop($numberStack);
-                    $secondNumberToUse = array_pop($numberStack);
+                    $operandToUse = array_pop($this->operatorStack);
+                    $firstNumberToUse = array_pop($this->numberStack);
+                    $secondNumberToUse = array_pop($this->numberStack);
 
-                    array_push($numberStack, calculate($operandToUse, $firstNumberToUse, $secondNumberToUse));
-                    array_push($operatorStack, $arg);
+                    array_push($this->numberStack, $this->helper->calculateValue($operandToUse, $firstNumberToUse, $secondNumberToUse));
+                    array_push($this->operatorStack, $arg);
                 }
                 else {
-                    array_push($operatorStack, $arg);
+                    array_push($this->operatorStack, $arg);
                 }
             }
             else {
                 //throw exception
                 throw new \InvalidArgumentException('invalid argument in array');
+
             }
         }
     }
