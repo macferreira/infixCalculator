@@ -2,11 +2,15 @@
 
 namespace InfixCalculatorTests;
 
-use InfixCalculator\InfixCalculator;
-
 require_once('vendor/autoload.php');
 require_once('InfixCalculator.php');
 
+use InfixCalculator\InfixCalculator;
+
+/**
+ * Class InfixCalculatorTests
+ * @package InfixCalculatorTests
+ */
 class InfixCalculatorTests extends \PHPUnit_Framework_TestCase
 {
     private $infixCalculator;

@@ -27,12 +27,16 @@ class InfixCalculatorHelper
         switch ($op) {
             case '*':
                 return $arg2*$arg1;
+                break;
             case '/':
                 return $arg2/$arg1;
+                break;
             case '+':
                 return $arg2+$arg1;
+                break;
             case '-':
                 return $arg2-$arg1;
+                break;
         }
     }
 
